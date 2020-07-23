@@ -1,8 +1,14 @@
 import React from 'react';
+import TodoTemaplte from 'components/TodoTemplate';
+import TodoInsert from 'components/TodoInsert';
+import TodoList from 'components/TodoList';
 
-function App() {
+function App() {  
   return (
-    <div>Todo App을 만들자!</div>
+    <TodoTemaplte>
+      <TodoInsert />
+      <TodoList />
+    </TodoTemaplte>
   );
 }
 
