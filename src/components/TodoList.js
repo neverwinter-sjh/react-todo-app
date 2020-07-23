@@ -2,12 +2,19 @@ import React from 'react';
 import TodoListItem from 'components/TodoListItem';
 import 'assets/css/TodoList.scss';
 
-const TodoList = () => {
+const TodoList = props => {
+  const { todos, removeTodo, changeChecked } = props;
+
   return (
     <div className="TodoList">
-      <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
+      {todos.map(todo => 
+        <TodoListItem 
+          key={todo.text} 
+          todo={todo} 
+          removeTodo={todo => removeTodo(todo)} 
+          changeChecked={todo => changeChecked(todo)}
+        />
+      )}
     </div>
   )
 };
