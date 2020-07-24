@@ -1,8 +1,15 @@
 import React, { useState, useCallback, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
 import 'assets/css/TodoInsert.scss';
+import _ from 'lodash';
 
 const TodoInsert = props => {  
+
+  const { todos } = useSelector(({ todos }) => ({    
+    todos: todos.todos
+  }));
+
   const { insertTodo } = props;
   const [value, setValue] = useState('');  
   const input = useRef(null);
@@ -12,12 +19,8 @@ const TodoInsert = props => {
     e.preventDefault();
   }, []);
 
-  const onClick = useCallback(e => {        
-    if (value.trim() === '') {
-      alert('공백은 추가할 수 없습니다.');      
-    } else {
-      insertTodo(value.trim());      
-    }
+  const onClick = useCallback(e => {                
+    insertTodo(value.trim());
     setValue('');
     input.current.focus();
     e.preventDefault();    
