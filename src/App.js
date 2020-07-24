@@ -10,27 +10,21 @@ const App = () => {
 
   const { todos } = useSelector(({ todos }) => ({    
     todos: todos.todos
-  }));
-
-  const dispatch = useDispatch();  
-
+  }));  
+  const dispatch = useDispatch(); 
   const onInsert = useCallback(text => {    
     if (text === '') {
       alert('내용을 입력해 주세요.');
       return;
     }
-
     const sameItem = _.find(todos, todo => todo.text === text);        
-
     if (sameItem) {
       alert('이미 추가된 항목입니다.');
     } else {
       return dispatch(insert(text));
     }
   }, [dispatch, todos]);
-
   const onToggle = useCallback(todo => dispatch(toggle(todo)), [dispatch]);
-  
   const onRemove = useCallback(todo => dispatch(remove(todo)), [dispatch]);
 
   return (

@@ -1,15 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
 import 'assets/css/TodoInsert.scss';
-import _ from 'lodash';
 
 const TodoInsert = props => {  
-
-  const { todos } = useSelector(({ todos }) => ({    
-    todos: todos.todos
-  }));
-
   const { insertTodo } = props;
   const [value, setValue] = useState('');  
   const input = useRef(null);

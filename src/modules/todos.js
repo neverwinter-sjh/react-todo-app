@@ -1,3 +1,8 @@
+/*
+  데이터에는 에러가 없다는 가정 하에, (앞단에서 에러 validation을 처리해야 함)
+  순수 CRUD 로직을 넣는다.
+*/
+
 const INSERT = 'todos/INSERT';
 const TOGGLE = 'todos/TOGGLE';
 const REMOVE = 'todos/REMOVE';
@@ -5,7 +10,7 @@ const REMOVE = 'todos/REMOVE';
 let todoId = 0;
 
 export const insert = text => ({
-  type: INSERT,
+  type: INSERT,  
   todo: {
     id: todoId++,
     text,
